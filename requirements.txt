@@ -2,3 +2,4 @@ python
 scikit-learn
 nltk
 punkt_tab
+dvc
