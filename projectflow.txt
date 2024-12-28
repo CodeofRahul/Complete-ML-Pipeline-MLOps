@@ -30,10 +30,14 @@ Adding a remote S3 storage to DVC:
 21> Create S3 (enter unique name and create)
 22> pip install dvc[s3]
 23> pip install aswcli
-24> aws configure
+24> "aws configure" - on terminal
 25> dvc remote add -d dvcstore s3://bucketname
 26> dvc commit-push the exp outcome that you want to keep
 27> Finally git add, commit, push
+
+Extra:
+> Remove/delete AWS resources
+> Adding stages to dvc.yaml: "dvc stage add -n data_ingestion -d src/data_ingestion.py -o data/raw python src/data_ingestion.py"
 
 
 
