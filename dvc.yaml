@@ -1,13 +1,13 @@
-stages:                                             # creating stages
-  data_ingestion:                                   # stage 1: data ingestion
-    cmd: python src/data_ingestion.py               # command to run for this stage
-    deps:                                           # dependencies for this stage  # dependency on itself
-    - src/data_ingestion.py                         # python file to run
-    # params:                                         # parameters for this stage
-    # - data_ingestion.test_size                      # parameter to control test size
-    outs:                                           # outputs of this stage
-    - data/raw                                      # output directory for this stage
-  data_preprocessing:                               # stage 2: data preprocessing
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+    - src/data_ingestion.py
+    params:
+    - data_ingestion.test_size
+    outs:
+    - data/raw
+  data_preprocessing:
     cmd: python src/data_preprocessing.py
     deps:
     - data/raw
@@ -19,8 +19,8 @@ stages:                                             # creating stages
     deps:
     - data/interim
     - src/feature_engineering.py
-    # params:
-    # - feature_engineering.max_features
+    params:
+    - feature_engineering.max_features
     outs:
     - data/processed
   model_building:
@@ -28,9 +28,9 @@ stages:                                             # creating stages
     deps:
     - data/processed
     - src/model_building.py
-    # params:
-    # - model_building.n_estimators
-    # - model_building.random_state
+    params:
+    - model_building.n_estimators
+    - model_building.random_state
     outs:
     - models/model.pkl
   model_evaluation:
